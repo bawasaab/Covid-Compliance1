@@ -1,0 +1,102 @@
+<div class="login-page" style="display: block!important; overflow-x: hidden;">
+
+  <div class="gatewat-page">
+
+    <div class="row row-fix justify-content-center">
+  
+      <div class="col-md-10 col-xl-8">
+        
+        <div class="register-logo">
+          <br/>
+          <a href=""><img src="assets/images/logo.png" class="check-logo"></a>
+          <br/>
+        </div>
+  
+        <div class="row">
+          <div class="col-md-6">
+        
+            <!-- /.login-logo -->
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Checkout</h3></div>
+                <div class="card-body login-card-body">
+                  
+                  <div class="input-group mb-3" id="lef-bx">
+                    <h3><i>1</i> Sign Up</h3>
+                    <span>Signed in as {{ checkoutEmail }}</span>
+                  </div>
+                  <hr/>
+          
+                  <div class="input-group mb-3" id="lef-bx">
+                    <h3><i>2</i> Payment</h3>
+                  </div>
+                  <hr/>
+        
+                  <div class="row">
+                    <!-- /.col -->
+                    <div class="col-12 text-center">
+                      <button (click)="pay(amt)" type="button" class="btn btn-primary btn-block" id="p-btn">Pay Now</button>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+          
+                  <div class="clearfix"></div>
+        
+                </div>
+                <!-- /.login-card-body -->
+              </div>
+        
+          </div>
+        
+        <div class="col-md-6">
+          <!-- /.login-logo -->
+          <div class="card">
+            <div class="card-body login-card-body" style="background: #f5f5f5;">
+              <h4 class="text-center">Order Summary</h4>
+        
+              <div class="table-responsive">
+                <table class="table">
+                  <tbody>
+                    
+                    <tr>
+                      <th style="width:50%">Plan:</th>
+                      <td>Compliance Package</td>
+                    </tr>
+        
+                    <tr>
+                      <th>Duration</th>
+                      <td>Until Canceled</td>
+                    </tr>
+        
+                    <tr>
+                      <th>Free Trial</th>
+                      <td>14 Days</td>
+                    </tr>
+        
+                    <tr>
+                      <th>Amount to be paid now</th>
+                      <td><b>A$0</b></td>
+                    </tr>
+                    
+                    <tr>
+                      <th>After Trial Period</th>
+                      <td>A$5</td>
+                    </tr>
+                  
+                  </tbody>
+                </table>
+              </div>
+        
+            </div>
+          </div>
+        </div>
+        
+        <!-- row end -->
+        </div>
+  
+      </div>
+  
+    </div>
+  
+  </div>
+
+</div>

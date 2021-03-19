@@ -1,0 +1,91 @@
+<app-common-header></app-common-header>
+
+<div class="content-wrapper">
+	<section class="content-header">
+		<div class="container-fluid">
+			<div class="row mb-2">
+				<div class="col-sm-6">
+					<h1>Location Management</h1>
+				</div>
+				<div class="col-sm-6">
+					<ol class="breadcrumb float-sm-right">
+						<li class="breadcrumb-item">
+							<a href="#">Dashboard</a>
+						</li>
+						<li class="breadcrumb-item active">Manage Locations</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Manage Your Locations</h3>
+							<div class="card-tools">
+								<div class="input-group input-group-sm" style="width: 160px;">
+									<a href="javascript:void(0);" routerLink="/restaurants/master" class="btn btn-block btn-info btn-sm" id="b-btn">
+										<i class="fas fa-plus"></i> &nbsp;Add New Location
+									</a>
+								</div>
+							</div>
+						</div>
+						<!-- card-header -->
+						<div class="card-body table-responsive p-0" style="height: 400px;">
+							<table class="table table-head-fixed text-nowrap">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Resturant Name</th>
+										<th>Location</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody *ngIf="users?.length;else no_data_templ">
+									<tr *ngFor="let user of users; let i = index">
+										<!-- <td>183</td>
+										<td>John Doe</td>
+										<td>78 Little Myers Street, CARGERIE</td>
+										<td>
+											<span><a href=""><i class="fas fa-tachometer-alt"></i> View Dashboard</a></span>&nbsp;
+											<span><a href=""><i class="fas fa-edit"></i> Edit</a></span>&nbsp;
+											<span><a href=""><i class="fas fa-qrcode"></i> View QR Code</a></span>
+										</td> -->
+										
+										<td *ngIf="i < 9;else tenth_td">{{ currentPage - 1 }}{{ i + 1 }}</td>                          
+										<ng-template #tenth_td>
+										<td>{{ (currentPage * 10) }}</td>                          
+										</ng-template>
+										<td>{{ user.restaurant_name }}</td>
+										<td>{{ user.restaurant_addr }}</td>
+										<td>
+											<span><a href="javascript:void(0);" routerLink="/restaurants/{{ user._id }}/checkins"><i class="fas fa-tachometer-alt"></i> View Dashboard</a></span>&nbsp;
+											<span><a href="javascript:void(0);" routerLink="/restaurants/master/{{ user._id }}"><i class="fas fa-edit"></i> Edit</a></span>&nbsp;
+											<span><a href="javascript:void(0);" (click)="goToLink(user.qr_code)"><i class="fas fa-qrcode"></i> View QR Code</a></span>
+										</td>
+									</tr>										
+								</tbody>
+								<ng-template #no_data_templ>
+									<tbody>
+										<tr>
+										<td class="text-center" colspan="7">No record found!</td>
+										</tr>
+									</tbody>
+									</ng-template>
+							</table>
+						</div>
+						<!-- card-body -->
+					</div>
+					<!-- card -->
+				</div>
+			</div>
+			<!-- row -->
+</div>
+
+	</section>
+</div>
+
+<app-common-footer></app-common-footer>

@@ -1,0 +1,146 @@
+<app-common-header></app-common-header>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<div class="container-fluid">
+			<div class="row mb-2">
+				<div class="col-sm-6">
+					<h1><i class="fas fa-utensils" id="foodx"></i> {{ restaurantData?.restaurant_name }}, <span>{{ restaurantData?.restaurant_addr }}</span><a href="javascript:void(0);" routerLink="/restaurants/master/{{ restaurantData?._id }}" class="labeledit label-info"><i class="fas fa-edit"></i> Edit</a></h1> </div>
+			</div>
+		</div>
+		<!-- /.container-fluid -->
+	</section>
+	<!-- Main content -->
+	<section class="content">
+		<div class="container-fluid">
+			<!-- Info boxes -->
+			<div class="row">
+				<div class="col-12 col-sm-6 col-md-9">
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Today's Visitor</h3>
+							<!-- <div class="card-tools">
+								<a (click)="getVisitorsCsv(restaurantData?._id)" href="javascript:void(0);" class="btn btn-success btn-sm"> <i class="fas fa-download"></i> Export CSV</a>
+							</div> -->
+						</div>
+						<!-- /.card-header -->
+						<div class="card-body table-responsive p-0" style="height: 350px;">
+							<table class="table table-head-fixed text-nowrap">
+								<thead>
+									<tr>
+										<th>Sno</th>
+										<th>Customer Name</th>
+										<th>Contact</th>
+										<th>Table Number</th>
+										<th>Checked In At</th>
+									</tr>
+								</thead>
+
+								<tbody *ngIf="todaysVisitors?.length;else no_data_templ">
+									<tr *ngFor="let user of todaysVisitors; let i = index">
+										<td>{{ i + 1 }}</td>
+										<td>{{ user.name }}</td>
+										<td>XXXXXXXXXX</td>
+										<td>{{ user.table_number }}</td>
+										<td>{{ user.create_date | date: 'dd/MM/yyyy hh:mm a' }}</td>
+									</tr>
+								</tbody>
+		
+								<ng-template #no_data_templ>
+									<tbody>
+									  <tr>
+										<td class="text-center" colspan="7">No visitor checked in today!</td>
+									  </tr>
+									</tbody>
+								</ng-template>
+
+								<!-- <tbody>
+									<tr>
+										<td>183</td>
+										<td>John Doe</td>
+										<td>XXXXXXXXXX</td>
+										<td>21</td>
+										<td><a href="">Edit Location</a></td>
+									</tr>
+									<tr>
+										<td>219</td>
+										<td>Alexander Pierce</td>
+										<td>XXXXXXXXXX</td>
+										<td>21</td>
+										<td><a href="">Edit Location</a></td>
+									</tr>
+									<tr>
+										<td>657</td>
+										<td>Bob Doe</td>
+										<td>XXXXXXXXXX</td>
+										<td>21</td>
+										<td><a href="">Edit Location</a></td>
+									</tr>
+									<tr>
+										<td>183</td>
+										<td>John Doe</td>
+										<td>XXXXXXXXXX</td>
+										<td>21</td>
+										<td><a href="">Edit Location</a></td>
+									</tr>
+									<tr>
+										<td>219</td>
+										<td>Alexander Pierce</td>
+										<td>XXXXXXXXXX</td>
+										<td>21</td>
+										<td><a href="">Edit Location</a></td>
+									</tr>
+									<tr>
+										<td>657</td>
+										<td>Bob Doe</td>
+										<td>XXXXXXXXXX</td>
+										<td>21</td>
+										<td><a href="">Edit Location</a></td>
+									</tr>
+									<tr>
+										<td>175</td>
+										<td>Mike Doe</td>
+										<td>XXXXXXXXXX</td>
+										<td>21</td>
+										<td><a href="">Edit Location</a></td>
+									</tr>
+								</tbody> -->
+							</table>
+						</div>
+						<!-- /.card-body -->
+					</div>
+					<!-- /.card -->
+				</div>
+				<!-- /.col -->
+				<!-- fix for small devices only -->
+				<div class="clearfix hidden-md-up"></div>
+				<div class="col-12 col-sm-6 col-md-3">
+					<div class="info-box mb-3"> <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-user-friends"></i></span>
+						<div class="info-box-content"> <span class="info-box-text">Total Visitors</span> <span class="info-box-number">{{ totalVisitorCnt }}</span> </div>
+						<!-- /.info-box-content -->
+					</div>
+					<div class="info-box mb-3">
+						<div class="info-box-content" id="d-grid"> <img [src]="restaurantData?.qr_code">
+							<div class="clearfix"></div>
+							<div class="btn-group">
+								<button type="button" class="btn btn-info" (click)="downloadFile(restaurantData?._id)"><i class="fas fa-download"></i> Download</button>
+								<!-- <a href="javascript:void(0);" routerLink="/restaurants/master/{{ restaurantData?._id }}" class="btn btn-info"><i class="fas fa-print"></i> Edit</a> -->
+							</div>
+						</div>
+						<!-- /.info-box-content -->
+					</div>
+					<!-- /.info-box -->
+				</div>
+				<!-- /.col -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container-fluid -->
+	</section>
+	<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<app-common-footer></app-common-footer>

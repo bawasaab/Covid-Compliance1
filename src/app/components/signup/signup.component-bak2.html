@@ -1,0 +1,86 @@
+<div class="hold-transition register-page">
+<div class="register-box">
+	<div class="register-logo">
+		<a href="">
+			<img src="assets/dist/img/logo.png" class="logo">
+			</a>
+		</div>
+		<div class="card">
+			<div class="card-body register-card-body">
+				<p class="login-box-msg">Register a new membership</p>
+				<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="First name" formControlName="first_name" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }">
+							<div class="input-group-append">
+								<div class="input-group-text">
+									<span class="fas fa-user"></span>
+								</div>
+							</div>
+							<div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
+								<div *ngIf="f.first_name.errors.required">first name is required</div>
+							</div>
+						</div>
+						<div class="input-group mb-3">
+							<input type="text" class="form-control" placeholder="Last name" formControlName="last_name" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }" >
+								<div class="input-group-append">
+									<div class="input-group-text">
+										<span class="fas fa-user"></span>
+									</div>
+								</div>
+								<div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
+									<div *ngIf="f.last_name.errors.required">last name is required</div>
+								</div>
+							</div>
+							<div class="input-group mb-3">
+								<input type="email" class="form-control" placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+									<div class="input-group-append">
+										<div class="input-group-text">
+											<span class="fas fa-envelope"></span>
+										</div>
+									</div>
+									<div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+										<div *ngIf="f.email.errors.required">Email is required</div>
+										<div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+									</div>
+								</div>
+								<div class="input-group mb-3">
+									<input type="password" class="form-control" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+										<div class="input-group-append">
+											<div class="input-group-text">
+												<span class="fas fa-lock"></span>
+											</div>
+										</div>
+										<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+											<div *ngIf="f.password.errors.required">Password is required</div>
+											<div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-8">
+											<div class="icheck-primary">
+												<!-- <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+													<label for="agreeTerms">
+I agree to the 
+														<a href="#">terms</a>
+													</label> -->
+												</div>
+											</div>
+											<!-- /.col -->
+											<div class="col-4">
+												<button type="submit" class="btn btn-primary btn-block" id="p-btn">Register</button>
+											</div>
+											<!-- /.col -->
+										</div>
+									</form>
+									<div class="clearfix"></div>
+									<hr/>
+									<a href="javascript:void(0);" class="text-center" id="b-text" routerLink="/login">
+										<i class="fas fa-sign-in-alt"></i> I already have a account
+									</a>
+								</div>
+								<!-- /.form-box -->
+							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.register-box -->
+					</div>

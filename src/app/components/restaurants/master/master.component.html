@@ -1,0 +1,58 @@
+<app-common-header></app-common-header>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Your Locations</h1> </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <form [formGroup]="restaurantForm" (ngSubmit)="onSubmit()" *ngIf="isLoaded" >
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Restaurant Name</label>
+                                    <!-- <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Restaurant Name">  -->
+                                    <input type="text" class="form-control" id="restaurant_name" placeholder="Enter Restaurant Name" formControlName="restaurant_name" [ngClass]="{ 'is-invalid': submitted && f.restaurant_name.errors }" value="{{restaurantData?.restaurant_name}}">
+                                    <div *ngIf="submitted && f.restaurant_name.errors" class="invalid-feedback">
+										<div *ngIf="f.restaurant_name.errors.required">Restaurant Name is required</div>
+									</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Restaurant Address</label>
+                                    <!-- <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Restaurant Address"> -->
+                                    <input type="text" class="form-control" id="restaurant_addr" placeholder="Enter Restaurant Address" formControlName="restaurant_addr" [ngClass]="{ 'is-invalid': submitted && f.restaurant_addr.errors }" value="{{restaurantData?.restaurant_addr}}">
+									<div *ngIf="submitted && f.restaurant_addr.errors" class="invalid-feedback">
+										<div *ngIf="f.restaurant_addr.errors.required">Restaurant Addrerss is required</div>
+									</div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary" id="p-btn">Submit Location</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+<app-common-footer></app-common-footer>

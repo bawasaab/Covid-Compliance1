@@ -1,0 +1,134 @@
+<app-common-header></app-common-header>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<div class="container-fluid">
+			<div class="row mb-2">
+				<div class="col-sm-6">
+					<h1>Manage Data</h1> </div>
+			</div>
+		</div>
+		<!-- /.container-fluid -->
+	</section>
+	<!-- Main content -->
+	<section class="content">
+		<div class="container-fluid">
+
+			<div class="row">
+				<div class="col-12">
+
+					<p>It is a requirement that you only use this data to contact your customers for COVID-19 related communications ONLY</p>
+					<div class="">
+						<input type="checkbox" [checked]="isChkBxChecked" (change)="isChkBxChecked = !isChkBxChecked">
+						<label for="remember">
+						  I confirm this data will be exclusively used for COVID-19 related communications
+						</label>
+					</div>
+
+					<div class="card">
+						<div class="card-header border-0">
+							<h3 class="card-title">card-title</h3>
+							<div class="col-8">
+								<div class="row">
+									<div class="col-sm-3">
+										<form [formGroup]="visitorReportForm" (ngSubmit)="onSubmit()">
+											<select class="form-control" *ngIf="restaurantData?.length;else no_restaurant_data_templ" (change)="go($event)" formControlName="selectedRestaurant">
+												<option *ngFor="let restaurant of restaurantData; let i = index" value="{{ restaurant._id }}">{{ restaurant.restaurant_name }} - {{ restaurant.restaurant_addr }}</option>
+											</select>
+											<ng-template #no_restaurant_data_templ>
+												<select class="form-control" placeholder="Select Restaurant"></select>
+											</ng-template>
+										</form>
+									</div>
+
+									<div class="col-md-3">
+										<ejs-datetimepicker 
+											#fromDtPkr
+											(change)="setfromDateChanged(fromDtPkr.value)" 
+											id='datetimepicker1' 
+											placeholder='Select from date' 
+											format ='yyyy-MM-dd' 
+											[value]='fromDt' 
+											[min]='minFromDt' 
+											[max]='minFromDt'>
+										</ejs-datetimepicker>
+									</div>
+					
+									<div class="col-md-3">
+										<ejs-datetimepicker 
+											#toDtPkr
+											(change)="setToDateChanged(toDtPkr.value)" 
+											id='datetimepicker2' 
+											placeholder='Select to date' 
+											format ='yyyy-MM-dd' 
+											[value]='toDt' 
+											[min]='minToDt' 
+											[max]='maxToDt'>
+										</ejs-datetimepicker>
+									</div>
+
+									<div class="col-sm-3">
+										<button (click)="getVisitorsCsv()" class="btn btn-success" [disabled]="!isChkBxChecked"> <i class="fas fa-download"></i> Export CSV</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /.card-header -->
+						
+						<!-- <div class="card-body table-responsive p-0" style="height: 400px;">
+							<table class="table table-head-fixed text-nowrap">
+								<thead>
+									<tr>
+										<th>Sno</th>
+										<th>VisitorName</th>
+										<th>Contact</th>
+										<th>Table Number</th>
+										<th>Checked In At</th>
+									</tr>
+								</thead>
+								
+								<tbody *ngIf="todaysVisitors?.length;else no_data_templ">
+									<tr *ngFor="let user of todaysVisitors; let i = index">
+										<td>{{ i + 1 }}</td>
+										<td>{{ user.name }}</td>
+										<td>{{ user.contact }}</td>
+										<td>{{ user.table_number }}</td>
+										<td>{{ user.create_date | date: 'dd/MM/yyyy hh:mm a' }}</td>
+									</tr>
+								</tbody>
+
+								<ng-template #no_data_templ>
+									<tbody>
+									  <tr>
+										<td class="text-center" colspan="7">No record found!</td>
+									  </tr>
+									</tbody>
+								</ng-template>
+							</table>
+						</div> -->
+
+						<!-- /.card-body -->
+						<!-- <div class="card-footer clearfix">
+							<ul class="pagination pagination-sm m-0 float-right">
+								<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+							</ul>
+						</div> -->
+					</div>
+					<!-- /.card -->
+				</div>
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container-fluid -->
+	</section>
+	<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<app-common-footer></app-common-footer>

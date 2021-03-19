@@ -1,0 +1,66 @@
+<div class="hold-transition login-page">
+<div class="login-box">
+	<div class="register-logo">
+		<a href="">
+			<img src="assets/dist/img/logo.png" class="logo">
+			</a>
+		</div>
+		<!-- /.login-logo -->
+		<div class="card">
+			<div class="card-body login-card-body">
+				<p class="login-box-msg">Sign in to Humdine</p>
+				<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+					<div class="input-group mb-3">
+						<input type="email" class="form-control" placeholder="Email" formControlName="universityEmail" [ngClass]="{ 'is-invalid': submitted && f.universityEmail.errors }" />
+							<div class="input-group-append">
+								<div class="input-group-text">
+									<span class="fas fa-envelope"></span>
+								</div>
+							</div>
+							<div *ngIf="submitted && f.universityEmail.errors" class="invalid-feedback">
+								<div *ngIf="f.universityEmail.errors.required">Email is required</div>
+								<div *ngIf="f.universityEmail.errors.email">Email must be a valid email address</div>
+							</div>
+						</div>
+						<div class="input-group mb-3">
+							<input type="password" class="form-control" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+								<div class="input-group-append">
+									<div class="input-group-text">
+										<span class="fas fa-lock"></span>
+									</div>
+								</div>
+								<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+									<div *ngIf="f.password.errors.required">Password is required</div>
+									<div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-8">
+									<div class="icheck-primary">
+										<!-- <input type="checkbox" id="remember"> -->
+											<!-- <label for="remember">Remember Me</label> -->
+										</div>
+									</div>
+									<div class="col-4">
+										<button type="submit" class="btn btn-primary btn-block" id="p-btn">Sign In</button>
+									</div>
+								</div>
+							</form>
+							<div class="clearfix"></div>
+							<hr/>
+							<p class="mb-1">
+								<!-- <a href="" id="b-text">
+									<i class="fas fa-question-circle"></i> I forgot my password
+								</a> -->
+							</p>
+							<p class="mb-0">
+								<a href="javascript:void(0);" routerLink="/signup" id="b-text">
+									<i class="fas fa-user-circle"></i> Register a new membership
+								</a>
+							</p>
+						</div>
+						<!-- /.login-card-body -->
+					</div>
+				</div>
+				<!-- /.login-box -->
+			</div>

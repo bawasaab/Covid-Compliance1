@@ -1,0 +1,102 @@
+<app-common-header></app-common-header>
+
+<div class="content-wrapper">
+	<section class="content-header">
+		<div class="container-fluid">
+			<div class="row mb-2">
+				<div class="col-sm-6">
+					<h1>Manage Data</h1>
+				</div>
+				<div class="col-sm-6">
+					<ol class="breadcrumb float-sm-right">
+						<li class="breadcrumb-item">
+							<a href="#">Dashboard</a>
+						</li>
+						<li class="breadcrumb-item active">Manage Data</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="content">
+		<div class="container-fluid">
+			
+			<!-- row -->
+			<div class="row">
+				<div class="col-6">
+					<form [formGroup]="visitorReportForm" (ngSubmit)="onSubmit()">
+						<select class="form-control" *ngIf="restaurantData?.length;else no_restaurant_data_templ" (change)="go($event)" formControlName="selectedRestaurant">
+							<option *ngFor="let restaurant of restaurantData; let i = index" value="{{ restaurant._id }}">{{ restaurant.restaurant_name }}</option>
+						</select>
+						<ng-template #no_restaurant_data_templ>
+							<select class="form-control" placeholder="Select Restaurant"></select>
+						</ng-template>
+					</form>
+				</div>
+				<!-- <div class="col-2">
+					<button class="btn btn-success" (click)="go($event)">GO</button>
+				</div> -->
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Visitors Detail</h3>
+							<div class="card-tools">
+								<div class="input-group input-group-sm" style="width: 160px;">
+									<button type="button" class="btn btn-block btn-success btn-sm" (click)="getVisitorsCsv()">
+										<i class="fas fa-file-csv"></i> &nbsp;Export CSV
+									</button>
+								</div>
+							</div>
+						</div>
+						<!-- /.card-header -->
+						<div class="card-body table-responsive p-0" style="height: 400px;">
+							<table class="table table-head-fixed text-nowrap">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Customer Name</th>
+										<th>Contact</th>
+										<th>Table Number</th>
+									</tr>
+								</thead>
+								
+								<!-- <tbody>
+									<tr>
+										<td>1</td>
+										<td>Customer Name 1</td>
+										<td>Contact Name 1</td>
+										<td>Table Number 1</td>
+									</tr>
+								</tbody> -->
+								<tbody *ngIf="todaysVisitors?.length;else no_data_templ">
+									<tr *ngFor="let user of todaysVisitors; let i = index">
+										<td>{{ i + 1 }}</td>
+										<td>{{ user.name }}</td>
+										<td>{{ user.contact }}</td>
+										<td>{{ user.table_number }}</td>
+									</tr>
+								</tbody>
+
+								<ng-template #no_data_templ>
+									<tbody>
+									  <tr>
+										<td class="text-center" colspan="7">No record found!</td>
+									  </tr>
+									</tbody>
+								</ng-template>
+							</table>
+						</div>
+						<!-- /.card-body -->
+					</div>
+					<!-- /.card -->
+				</div>
+			</div>
+		</div>
+
+	</section>
+</div>
+
+<app-common-footer></app-common-footer>

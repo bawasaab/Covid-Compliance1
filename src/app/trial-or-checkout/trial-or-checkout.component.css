@@ -1,0 +1,24 @@
+/* .check-logo{width: 220px;margin: 0px 0px 30px 0px;}
+div#lef-bx h3 {float: left;width: 100%;text-align: left;font-weight: 300;color: #505050;font-size: 22px;}  
+div#lef-bx h3 i {font-size: 16px;color: #4CAF50;margin: 4px 6px 0px 0px;float: left;}
+div#lef-bx span {font-size: 16px;color: #8c8c8c;} */
+
+
+.topbar {text-align: center;background: #3336a2;float: left;width: 100%;padding: 10px 0px;}
+.topbar a {font-weight: bold;color: #fff;}	
+
+.check-logo{width: 220px;margin: 0px 0px 30px 0px;}
+div#lef-bx h3 {float: left;width: 100%;text-align: left;font-weight: 300;color: #505050;font-size: 22px;}
+
+div#lef-bx h3 i {
+    font-size: 14px;
+    background: #4CAF50;
+    margin: 4px 6px 0px 0px;
+    float: left;
+    font-style: normal;
+    color: #fff;
+    padding: 2px 7px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-align: center;
+}
